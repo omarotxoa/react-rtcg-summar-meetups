@@ -1,5 +1,7 @@
+import { useNavigate } from 'react-router-dom';
 import NewMeetupForm from '../components/meetups/NewMeetupForm.js';
 function NewMeetupsPage() {
+  const navigate = useNavigate();
   function addMeetupHandler(meetupData) {
     fetch('https://react-tcg-summary-default-rtdb.firebaseio.com/meetups.json',
     {
@@ -8,6 +10,8 @@ function NewMeetupsPage() {
       headers: {
         'Content-Type': 'application/json'
       }
+    }).then(() => {
+      navigate('/');
     });
   }
   
